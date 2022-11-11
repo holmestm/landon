@@ -1,7 +1,7 @@
 [
   {"class": null, "imgref": "images/hotel/intro_room.jpg", "alttext": "Intro Gallery Room Sample Pictures" },
+  {"class": "hidesm", "imgref": "images/hotel/intro_wedding.jpg", "alttext": "Intro Gallery Dining Sample Pictures" },
   {"class": null, "imgref": "images/hotel/intro_pool.jpg", "alttext": "Intro Gallery Pool Sample Pictures" },
   {"class": null, "imgref": "images/hotel/intro_dining.jpg", "alttext": "Intro Gallery Dining Sample Pictures" },
-  {"class": null, "imgref": "images/hotel/intro_attractions.jpg", "alttext": "Intro Gallery Attractions Sample Pictures" },
-  {"class": "hidesm", "imgref": "images/hotel/intro_wedding.jpg", "alttext": "Intro Gallery Dining Sample Pictures" }
+  {"class": null, "imgref": "images/hotel/intro_attractions.jpg", "alttext": "Intro Gallery Attractions Sample Pictures" }
 ]

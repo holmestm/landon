@@ -12,7 +12,7 @@ var galleryImagesData =
   JSON.parse(fs.readFileSync('../components/data/gallery_images.json', 'utf8'));
 
 galleryImagesData.forEach(function(galleryImage) {
-  var className = galleryImage.className;
+  var className = galleryImage.class;
   if (!className || (className.trim() == ""))
     className = "no_class";
 

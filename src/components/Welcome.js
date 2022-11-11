@@ -1,14 +1,34 @@
-import React from 'react';
-import galleryImages from './data/gallery_images.json'
+import React, { useState, useEffect } from 'react';
+//import galleryImages from './data/gallery_images.json'
 
 const Welcome = () => {
+  /* */
+  const [galleryImages, setGalleryImages] = useState([]);
+
+  const loadGalleryImages = async () => {
+    const resp = await fetch("https://2cdhuanguh.execute-api.eu-west-2.amazonaws.com/Production/galleryimages");
+    let jsonData = await resp.json();
+    jsonData = jsonData.map(image => ({
+      className: null,
+      imgref: image.src,
+      alttext: image.alt
+    }))
+
+    jsonData[jsonData.length - 1].className = "hidesm";
+
+    setGalleryImages(jsonData);
+  }
+  useEffect(() => {
+    loadGalleryImages();
+  }, [])  
+  /* */
   return (
     <div className="scene" id="welcome">
       <article className="content">
         <div className="gallery">
           {
             galleryImages.map((img)=>
-              <img class={img.class} src={img.imgref} alt={img.alttext} />
+              <img className={img.className} src={img.imgref} alt={img.alttext} />
             )
           }
         </div>
