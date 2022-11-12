@@ -1,9 +1,43 @@
-import React from 'react';
-import amenityInfoList from './data/amenities.json';
-import arrivalInfoList from './data/arrival_info.json';
-import accessibilityList from './data/accessibilities.json';
+import React, { useState, useEffect } from 'react';
+//import amenityInfoList from './data/amenities.json';
+//import arrivalInfoList from './data/arrival_info.json';
+//import accessibilityList from './data/accessibilities.json';
 
 const HotelInfo = () => {
+  /* */
+  const [arrivalInfoList, setArrivalInfoList] = useState([]);
+  const [amenityInfoList, setAmenityInfoList] = useState([]);
+  const [accessibilityList, setAccessibilityList] = useState([]);
+
+  const loadArrivalInfo = async () => {
+    const resp = await fetch("https://2cdhuanguh.execute-api.eu-west-2.amazonaws.com/Production/arrivalinfo");
+    let jsonData = await resp.json();
+
+    setArrivalInfoList(jsonData);
+  }
+
+  const loadAmenityInfo = async () => {
+    const resp = await fetch("https://2cdhuanguh.execute-api.eu-west-2.amazonaws.com/Production/services");
+    let jsonData = await resp.json();
+
+    setAmenityInfoList(jsonData.map(item => item.name));
+  }  
+
+  const loadAccessibilityInfo = async () => {
+    const resp = await fetch("https://2cdhuanguh.execute-api.eu-west-2.amazonaws.com/Production/accessibilities");
+    let jsonData = await resp.json();
+
+    setAccessibilityList(jsonData.map(item => item.name));
+  }  
+
+  useEffect(() => {
+    Promise.all([
+      loadArrivalInfo(),
+      loadAmenityInfo(),
+      loadAccessibilityInfo()
+    ])
+  }, []) 
+  /* */  
   return (
     <div className="scene" id="hotelinfo">
       <article className="heading">
